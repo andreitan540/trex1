@@ -17,6 +17,7 @@ var gamerOver;
 var reiniciaimagem;
 var gamerOverimagem;
 var checkPoint, morte, pulo;
+var larguraTela = window.innerWidth;
 
 function reset(){
   
@@ -41,7 +42,7 @@ grupodenuvens.destroyEach();
 function obstaculos() {
   
   if (frameCount % 100 === 0) { 
-    var obstaculo = createSprite(600, 165, 10, 40);  
+    var obstaculo = createSprite(larguraTela, 165, 10, 40);  
     obstaculo.velocityX = -(4 + 3 * pontos /100);   
 
     numero = Math.round(random (1,6))   
@@ -82,7 +83,7 @@ function nuvens() {
     
   //ele serve para criar as nuvens ex: ele criar as nuvens em tempo pausada mente.  
   if (frameCount % 60 === 0) {
-    var nuvem = createSprite(600, 100, 40, 10);  
+    var nuvem = createSprite(larguraTela, 100, 40, 10);  
 
     nuvem.velocityX = -3; 
 
@@ -124,7 +125,7 @@ function preload() {
 }
 
 function setup(){
-  createCanvas(600,200);
+  createCanvas(larguraTela,200);
 
   trex = createSprite(50, 155, 15, 40);
   trex.addAnimation("correndo", trexCorrendo);
