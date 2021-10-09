@@ -70,7 +70,7 @@ function obstaculos() {
 
     }
 
-    obstaculo.lifetime = 200;
+    obstaculo.lifetime = larguraTela;
 
     obstaculo.scale = 0.6
     grupodeobstaculos.add(obstaculo);
@@ -93,7 +93,7 @@ function nuvens() {
      //ele cria um numero aleatorio que faz a nuvem tar para cima ou para baixo                        aleotariamente    
     nuvem.y = Math.round(random(1, 100))
 
-    nuvem.lifetime = 200;
+    nuvem.lifetime = larguraTela;
     grupodenuvens.add(nuvem) 
 
   } 
@@ -104,7 +104,7 @@ function preload() {
 //aqui vc colocar para adicionar as imagens salvas  
 
   trexCorrendo = loadAnimation("trex1.png", "trex3.png", "trex4.png");
-  imagemSolo = loadImage("ground2.png"); 
+  imagemSolo = loadAnimation("ground2.png","ground2.png");  
 
   nuvemImagem = loadImage("cloud.png");
 
@@ -134,7 +134,7 @@ function setup(){
   trex.setCollider("circle", 0,0,40)
 
   solo = createSprite(300, 190, 600, 20);  
-  solo.addImage(imagemSolo); 
+  solo.addAnimation("soloanimacao",imagemSolo); 
 
   soloInvisivel = createSprite(300, 202, 600, 20);
   soloInvisivel.visible = false;
@@ -145,11 +145,11 @@ function setup(){
   grupodeobstaculos = new Group();  
   grupodenuvens = new Group();  
 
-  reinicia = createSprite(300, 140, 40, 40);
+  reinicia = createSprite(larguraTela/2, 140, 40, 40);
   reinicia.addImage(reiniciaimagem);  
   reinicia.visible = false;  
 
-  gamerOver = createSprite(300, 100, 40, 40);
+  gamerOver = createSprite(larguraTela/2, 100, 40, 40);
   gamerOver.addImage(gamerOverimagem);  
   gamerOver.visible = false;
   
@@ -175,7 +175,7 @@ function draw() {
 
     solo.velocityX = -(4 + 3 * pontos /100);   
 
-    if (solo.x <0 ) {
+    if (solo.x <larguraTela /2 ) {
       solo.x = solo.width /2;     
     }
 
