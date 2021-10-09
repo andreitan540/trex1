@@ -179,9 +179,10 @@ function draw() {
       solo.x = solo.width /2;     
     }
 
-    if (keyDown("space") && trex.y >120) { 
+    if ((keyDown("space") || touches.length>0) && trex.y >120) { 
       trex.velocityY= -6;
       pulo.play();
+      touches = []
     }
 
     nuvens()
@@ -206,13 +207,15 @@ function draw() {
     reinicia.visible = true;  
     gamerOver.visible = true;  
 
-    if (mousePressedOver(reinicia)) {
+    if (mousePressedOver(reinicia)|| touches.length>0) {
       reset();
+      touches = []
     } 
 
   } else if (estado === 'inicio') {
-    if (keyDown("space")) { 
+    if ((keyDown("space") || touches.length>0)) { 
       estado = 'jogar';  
+      touches = []
     }             
   }
   
